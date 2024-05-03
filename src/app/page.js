@@ -5,13 +5,12 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { materialLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import html2pdf from 'html2pdf.js';
 
 export default function Home() {
   const [markdown, setMarkdown] = useState(`
-  # Hello, Markdown!
+  # Hello, Cloudtype!
 
-  \`\`\`jsx
+  \`\`\`javascript
   function sum(a, b) {
     return a + b;
   }
@@ -22,16 +21,6 @@ export default function Home() {
 
   const handleChange = (event) => {
     setMarkdown(event.target.value);
-  };
-
-  const handleDownloadPdf = () => {
-    const element = contentRef.current;
-    html2pdf()
-      .from(element)
-      .set({
-        margin: 10
-      })
-      .save('markdown.pdf');
   };
 
   return (
@@ -69,9 +58,6 @@ export default function Home() {
             {markdown}
           </ReactMarkdown>
         </div>
-        <button onClick={handleDownloadPdf} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Download PDF
-        </button>
       </div>
     </div>
   );
